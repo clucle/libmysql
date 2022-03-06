@@ -1,2 +1,3 @@
+build/
 extlib/yassl/include/config.h
 include/my_config.h

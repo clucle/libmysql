@@ -3,7 +3,7 @@
 /* #undef HAVE_ALLOCA_H */
 /* #undef HAVE_ARPA_INET_H */
 /* #undef HAVE_CRYPT_H */
-#define HAVE_DIRENT_H 1
+/* #undef HAVE_DIRENT_H */
 /* #undef HAVE_EXECINFO_H */
 #define HAVE_FCNTL_H 1
 #define HAVE_FENV_H 1
@@ -17,11 +17,11 @@
 /* #undef HAVE_NETINET_IN_H */
 /* #undef HAVE_PATHS_H */
 /* #undef HAVE_PWD_H */
-#define HAVE_SCHED_H 1
+/* #undef HAVE_SCHED_H */
 /* #undef HAVE_SELECT_H */
 #define HAVE_STDDEF_H 1
 #define HAVE_STDLIB_H 1
-#define HAVE_STRINGS_H 1
+/* #undef HAVE_STRINGS_H */
 #define HAVE_STRING_H 1
 /* #undef HAVE_SYNCH_H */
 /* #undef HAVE_SYSENT_H */
@@ -40,8 +40,8 @@
 /* #undef HAVE_SYS_UN_H */
 /* #undef HAVE_TERMIOS_H */
 /* #undef HAVE_TERMIO_H */
-#define HAVE_UNISTD_H 1
-#define HAVE_UTIME_H 1
+/* #undef HAVE_UNISTD_H */
+/* #undef HAVE_UTIME_H */
 
 /* Functions we may want to use. */
 #define HAVE_ACCESS 1
@@ -62,7 +62,7 @@
 /* #undef HAVE_FCONVERT */
 /* #undef HAVE_FDATASYNC */
 #define HAVE_FESETROUND 1
-#define HAVE_FINITE 1
+/* #undef HAVE_FINITE */
 /* #undef HAVE_FP_EXCEPT */
 /* #undef HAVE_FSEEKO */
 /* #undef HAVE_FSYNC */
@@ -72,7 +72,7 @@
 /* #undef HAVE_GETHOSTBYNAME_R */
 /* #undef HAVE_GETHRTIME */
 /* #undef HAVE_GETNAMEINFO */
-#define HAVE_GETPAGESIZE 1
+/* #undef HAVE_GETPAGESIZE */
 /* #undef HAVE_GETPASS */
 /* #undef HAVE_GETPASSPHRASE */
 /* #undef HAVE_GETPWNAM */
@@ -133,11 +133,11 @@
 /* #undef HAVE_SIGTHREADMASK */
 /* #undef HAVE_SIGWAIT */
 /* #undef HAVE_SLEEP */
-#define HAVE_SNPRINTF 1
+/* #undef HAVE_SNPRINTF */
 /* #undef HAVE_STPCPY */
 #define HAVE_STRERROR 1
 /* #undef HAVE_STRLCPY */
-/* #undef HAVE_STRNLEN */
+#define HAVE_STRNLEN 1
 #define HAVE_STRPBRK 1
 /* #undef HAVE_STRSEP */
 #define HAVE_STRSTR 1
@@ -151,8 +151,8 @@
 /* #undef HAVE_THR_SETCONCURRENCY */
 /* #undef HAVE_THR_YIELD */
 /* #undef HAVE_VASPRINTF */
-#define HAVE_VSNPRINTF 1
-#define HAVE_SSIZE_T 1
+/* #undef HAVE_VSNPRINTF */
+/* #undef HAVE_SSIZE_T */
 
 /* Symbols we may use */
 /* #undef HAVE_SYS_ERRLIST */
@@ -168,7 +168,7 @@
 # define HAVE_CHAR 1
 #endif
 
-#define SIZEOF_CHARP 4
+#define SIZEOF_CHARP 8
 #if SIZEOF_CHARP
 # define HAVE_CHARP 1
 #endif
@@ -198,12 +198,12 @@
 # define HAVE_OFF_T 1
 #endif
 
-#define SIZEOF_SIGSET_T 4
+/* #undef SIZEOF_SIGSET_T */
 #if SIZEOF_SIGSET_T
 # define HAVE_SIGSET_T 1
 #endif
 
-#define SIZEOF_SIZE_T 4
+#define SIZEOF_SIZE_T 8
 #if SIZEOF_SIZE_T
 # define HAVE_SIZE_T 1
 #endif
@@ -289,8 +289,8 @@
 
 #define STACK_DIRECTION -1
 
-#define SHAREDIR "C:/Work/LuaDist/Win/bin/../tmp/libmysql-6.0.2-Windows-x86/share/mysql"
+#define SHAREDIR "share"
 #define THREAD 1
 #define THREAD_SAFE_CLIENT 1
 
-#define DEFAULT_CHARSET_HOME "C:/Work/LuaDist/Win/bin/../tmp/libmysql-6.0.2-Windows-x86"
+#define DEFAULT_CHARSET_HOME "C:/mysql/"

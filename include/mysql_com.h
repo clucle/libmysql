@@ -56,6 +56,11 @@
 #define MYSQL_SERVICENAME "MySQL"
 #endif /* __WIN__ */
 
+#if defined(__WIN__)
+#define my_socket int
+#define my_bool char
+#endif
+
 /*
   You should add new commands to the end of this list, otherwise old
   servers won't be able to handle them as 'unsupported'.

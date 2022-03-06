@@ -72,7 +72,7 @@ typedef struct {
     cursor is positioned in either case
     pins[0..2] are used, they are NOT removed on return
 */
-static int lfind(LF_SLIST * volatile *head, CHARSET_INFO *cs, uint32 hashnr,
+static int lfind2(LF_SLIST * volatile *head, CHARSET_INFO *cs, uint32 hashnr,
                  const uchar *key, uint keylen, CURSOR *cursor, LF_PINS *pins)
 {
   uint32       cur_hashnr;
@@ -158,7 +158,7 @@ static LF_SLIST *linsert(LF_SLIST * volatile *head, CHARSET_INFO *cs,
 
   for (;;)
   {
-    if (lfind(head, cs, node->hashnr, node->key, node->keylen,
+    if (lfind2(head, cs, node->hashnr, node->key, node->keylen,
               &cursor, pins) &&
         (flags & LF_HASH_UNIQUE))
     {
@@ -209,7 +209,7 @@ static int ldelete(LF_SLIST * volatile *head, CHARSET_INFO *cs, uint32 hashnr,
 
   for (;;)
   {
-    if (!lfind(head, cs, hashnr, key, keylen, &cursor, pins))
+    if (!lfind2(head, cs, hashnr, key, keylen, &cursor, pins))
     {
       res= 1; /* not found */
       break;
@@ -233,7 +233,7 @@ static int ldelete(LF_SLIST * volatile *head, CHARSET_INFO *cs, uint32 hashnr,
             (to ensure the number of "set DELETED flag" actions
             is equal to the number of "remove from the list" actions)
           */
-          lfind(head, cs, hashnr, key, keylen, &cursor, pins);
+          lfind2(head, cs, hashnr, key, keylen, &cursor, pins);
         }
         res= 0;
         break;
@@ -259,12 +259,12 @@ static int ldelete(LF_SLIST * volatile *head, CHARSET_INFO *cs, uint32 hashnr,
     it uses pins[0..2], on return the pin[2] keeps the node found
     all other pins are removed.
 */
-static LF_SLIST *lsearch(LF_SLIST * volatile *head, CHARSET_INFO *cs,
+static LF_SLIST *lsearch2(LF_SLIST * volatile *head, CHARSET_INFO *cs,
                          uint32 hashnr, const uchar *key, uint keylen,
                          LF_PINS *pins)
 {
   CURSOR cursor;
-  int res= lfind(head, cs, hashnr, key, keylen, &cursor, pins);
+  int res= lfind2(head, cs, hashnr, key, keylen, &cursor, pins);
   if (res)
     _lf_pin(pins, 2, cursor.curr);
   _lf_unpin(pins, 0);
@@ -459,7 +459,7 @@ void *lf_hash_search(LF_HASH *hash, LF_PINS *pins, const void *key, uint keylen)
     return MY_ERRPTR;
   if (*el == NULL && unlikely(initialize_bucket(hash, el, bucket, pins)))
     return MY_ERRPTR;
-  found= lsearch(el, hash->charset, my_reverse_bits(hashnr) | 1,
+  found= lsearch2(el, hash->charset, my_reverse_bits(hashnr) | 1,
                  (uchar *)key, keylen, pins);
   lf_rwunlock_by_pins(pins);
   return found ? found+1 : 0;

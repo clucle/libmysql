@@ -82,7 +82,7 @@ union ft64 {
   __int64 i64;
 };
 
-struct timespec {
+struct timespec2 {
   union ft64 tv;
   /* The max timeout value in millisecond for pthread_cond_timedwait */
   long max_timeout_msec;

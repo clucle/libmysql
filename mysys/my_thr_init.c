@@ -193,7 +193,7 @@ my_bool my_thread_global_init(void)
 
 my_bool my_wait_for_other_threads_to_die(uint number_of_threads)
 {
-  struct timespec abstime;
+  struct timespec2 abstime;
   my_bool all_threads_killed= 1;
 
   set_timespec(abstime, my_thread_end_wait_time);

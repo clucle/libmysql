@@ -20,6 +20,7 @@
    functions, especially they handle tricks for Tru64 where 'long' is
    64 bit already and our 'longlong' is just a 'long'.
  */
+/*
 #include <my_global.h>
 #include <m_string.h>
 
@@ -27,3 +28,4 @@
 #define USE_UNSIGNED
 #include "strto.c"
 #endif
+*/

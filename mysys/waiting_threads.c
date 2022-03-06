@@ -1036,7 +1036,7 @@ retry:
 int wt_thd_cond_timedwait(WT_THD *thd, pthread_mutex_t *mutex)
 {
   int ret= WT_TIMEOUT;
-  struct timespec timeout;
+  struct timespec2 timeout;
   ulonglong before, after, starttime;
   WT_RESOURCE *rc= thd->waiting_for;
   DBUG_ENTER("wt_thd_cond_timedwait");
